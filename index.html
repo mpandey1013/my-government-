@@ -92,6 +92,8 @@
     }
     .formGroup textarea { min-height:130px; resize:vertical; }
 
+    .small { max-width: 240px; }
+
     @media(min-width:700px) { .pageContainer { padding:40px 28px 60px; } .mainMenuBox { padding:52px 48px; } }
   </style>
 </head>
@@ -173,7 +175,26 @@
                 <input type="text" id="partyName" name="partyName" placeholder="Enter party name" required>
               </div>
 
-              <!-- add the rest of your party form fields here -->
+              <div class="formGroup">
+                <label for="partyColor">Party Color (hex)</label>
+                <input type="text" id="partyColor" name="partyColor" placeholder="#2c7897" class="small">
+              </div>
+
+              <div class="formGroup">
+                <label for="partySlogan">Slogan</label>
+                <input type="text" id="partySlogan" name="partySlogan" placeholder="For a better future">
+              </div>
+
+              <div class="formGroup">
+                <label for="partyIdeology">Ideology</label>
+                <select id="partyIdeology" name="partyIdeology">
+                  <option value="centrist">Centrist</option>
+                  <option value="left">Left</option>
+                  <option value="right">Right</option>
+                  <option value="green">Green</option>
+                </select>
+              </div>
+
               <div class="buttonStack">
                 <button type="submit" class="gameButton">CREATE PARTY</button>
                 <button type="button" class="gameButton secondary" data-action="back-to-profile">BACK</button>
@@ -183,9 +204,107 @@
         </div>
       </section>
 
-      <!-- Add remaining screens/content here (policies, budget, gameplay, etc.) -->
+      <!-- SCREEN ID: policiesScreen -->
+      <section id="policiesScreen" class="gameScreen">
+        <div class="pageContainer">
+          <h1 class="screenTitle">POLICY PRIORITIES</h1>
+          <p class="screenSubtitle">Choose up to three policy priorities for your government.</p>
+
+          <div class="gameCard">
+            <form id="policiesForm">
+              <div class="formGroup">
+                <label><input type="checkbox" name="policy" value="health"> Strengthen Healthcare</label>
+                <label><input type="checkbox" name="policy" value="education"> Invest in Education</label>
+                <label><input type="checkbox" name="policy" value="economy"> Economic Growth & Jobs</label>
+                <label><input type="checkbox" name="policy" value="security"> National Security</label>
+                <label><input type="checkbox" name="policy" value="environment"> Climate & Environment</label>
+              </div>
+
+              <div class="buttonStack">
+                <button type="submit" class="gameButton">SAVE POLICIES</button>
+                <button type="button" class="gameButton secondary" data-action="back-to-party">BACK</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN ID: budgetScreen -->
+      <section id="budgetScreen" class="gameScreen">
+        <div class="pageContainer">
+          <h1 class="screenTitle">BUDGET ALLOCATION</h1>
+          <p class="screenSubtitle">Assign percentages of the national budget to key sectors (must sum to 100%).</p>
+
+          <div class="gameCard">
+            <form id="budgetForm">
+              <div class="formGroup">
+                <label for="budgetHealth">Healthcare (%)</label>
+                <input type="number" id="budgetHealth" name="budgetHealth" min="0" max="100" value="30">
+              </div>
+              <div class="formGroup">
+                <label for="budgetEducation">Education (%)</label>
+                <input type="number" id="budgetEducation" name="budgetEducation" min="0" max="100" value="25">
+              </div>
+              <div class="formGroup">
+                <label for="budgetDefense">Defense (%)</label>
+                <input type="number" id="budgetDefense" name="budgetDefense" min="0" max="100" value="20">
+              </div>
+              <div class="formGroup">
+                <label for="budgetInfrastructure">Infrastructure (%)</label>
+                <input type="number" id="budgetInfrastructure" name="budgetInfrastructure" min="0" max="100" value="15">
+              </div>
+              <div class="formGroup">
+                <label for="budgetWelfare">Welfare (%)</label>
+                <input type="number" id="budgetWelfare" name="budgetWelfare" min="0" max="100" value="10">
+              </div>
+
+              <div class="buttonStack">
+                <button type="submit" class="gameButton">CONFIRM BUDGET</button>
+                <button type="button" class="gameButton secondary" data-action="back-to-policies">BACK</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN ID: reviewScreen -->
+      <section id="reviewScreen" class="gameScreen">
+        <div class="pageContainer">
+          <h1 class="screenTitle">REVIEW & LAUNCH</h1>
+          <p class="screenSubtitle">Review your profile, party and choices before launching your government.</p>
+
+          <div class="gameCard">
+            <div id="reviewSummary"></div>
+            <div class="buttonStack">
+              <button id="launchGameButton" class="gameButton">LAUNCH GOVERNMENT</button>
+              <button type="button" class="gameButton secondary" data-action="back-to-budget">BACK</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN ID: gameplayScreen -->
+      <section id="gameplayScreen" class="gameScreen">
+        <div class="pageContainer">
+          <h1 class="screenTitle">GOVERNANCE</h1>
+          <p class="screenSubtitle">Your tenure begins. Monitor approval and manage events.</p>
+
+          <div class="gameCard">
+            <div id="gameplayContent">
+              <p>Welcome, Prime Minister. This is a minimal gameplay placeholder. Your profile and choices are saved locally.</p>
+              <pre id="gameplayData" style="white-space:pre-wrap;color:var(--text-secondary)"></pre>
+            </div>
+            <div class="buttonStack">
+              <button id="endGameButton" class="gameButton danger">END GOVERNMENT</button>
+              <button type="button" class="gameButton secondary" data-action="back-to-main">BACK TO MAIN MENU</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div> <!-- #gameContent -->
   </div> <!-- #gameApp -->
+
+  <script src="app.js"></script>
 </body>
 </html>
